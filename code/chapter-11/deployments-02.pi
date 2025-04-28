@@ -1,0 +1,37 @@
+% Picat is a multiparadigm logic/imperative/constraint language.
+% Learn more at https://picat-lang.org/
+
+import planner, math, util.
+
+final(N) =>
+  foreach($server(_, State, Version) in N)
+    State = on, Version = 3
+  end.
+
+cost(State) = Out =>
+  member($server(_, on, Vmin), State).minof(Vmin),
+  member($server(_, on, Vmax), State).maxof(Vmax),
+  Out = 1 + max(0, Vmax - Vmin)**3.
+
+% At least one server online
+valid(State) => member($server(_, on, _), State). 
+action(From, To, Action, Cost) ?=> % toggle state
+  member(X, From), 
+  (
+   Action = $off(X[1]), To = replace(From, X, X.replace(on, off));
+   Action = $on(X[1]), X[3] = 3, To = replace(From, X, X.replace(off, on))
+  ), 
+  valid(To), 
+  Cost = cost(From).
+
+action(From, To, Action, Cost) => % increment version
+  member(X, From),
+  X = $server(Name, off, Version),
+  To = replace(From, X, X.replace_at(3, Version+1)),
+  Action = $upgrade(Name),
+  Cost = cost(From).
+
+main =>
+  Start = [$server(s1, on, 1), $server(s2, on, 1)],
+  best_plan(Start, Plan, Cost),
+  writeln(Plan), writeln(Cost).
