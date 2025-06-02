@@ -1,3 +1,12 @@
+### 0.10
+
+  - New chapter titles
+  - New, more compact tables
+  - "Simplifying Conditionals" renamed to "Refactoring Code", moved to chapter 3
+  - "Refactoring Code" now covers refactoring more broadly and use of sets
+  - "Testing" chapter now includes example of property-testing a refactoring
+  - One new exercise
+
 ### 0.9
 
 - New cover!
