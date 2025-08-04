@@ -1,3 +1,33 @@
+### 0.11
+
+
+- Brand new chapter, "Proving Code Correct", covering proofs, loop invariants, formal verification
+
+- Total rewrite of "Database" chapter:
+
+  - Now covers database representations, relational model, queries, joins, and constraints
+  - Two new executable SQL examples on constraints
+  - One new image
+
+- Total rewrite of "Functional Correctness":
+
+  - Now covers assertions, MISU, polymorphism, advice
+  - Loop invariants and formal verification moved to proofs chapter
+
+- Total rewrite of "Case Coverage", now called "Case Analysis":
+
+  - New introduction and motivating example
+  - More material on analysing code with decision tables, techniques, when not to use DTs
+  - Redundant examples removed
+
+- Logic chapter improved, now covers the way-more-common scoped quantifiers before unscoped
+
+- Fixed "symmetric difference" exercise
+- Six exercises removed, eleven added (+5 total)
+- Better format for proof tables and rewrite rules
+- Some initial table of contents tweaks 
+- Fixed PDF bug: admonition sidebars now render correctly in Acrobat
+
 ### 0.10
 
   - New chapter titles

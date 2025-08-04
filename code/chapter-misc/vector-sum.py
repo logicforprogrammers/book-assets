@@ -1,3 +1,5 @@
+"""An example of a loop invariant in an older version of the book."""
+
 # requires: len(vec1) == len(vec2)
 # ensures: len(out) == len(vec1)
 # ensures: all i in 0..<len(out): out[i] == vec1[i] + vec2[i]
