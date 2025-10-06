@@ -1,4 +1,4 @@
-% This file uses SWI-Prolog.
+% SWI-Prolog is a logic programming language.
 % Try this online: https://swish.swi-prolog.org/
 
 % parent(X, Y) = X is the parent of Y

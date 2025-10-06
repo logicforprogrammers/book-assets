@@ -1,8 +1,10 @@
-\* TLA+ is a formal specification language
-\* that can verify abstract software models satisfy properties.
-\* Learn more at https://tlapl.us
+TLA+ is a formal specification language
+that can verify abstract software models satisfy properties.
+Learn more at https://tlapl.us
 
----- MODULE transfers ----
+This requires `wire.cfg` to work.
+To run in VSCode, first download both files, install the TLA+ extension, and run `TLA+: Check Model with TLC`.
+---- MODULE wire ----
 EXTENDS TLC, Integers
 
 VARIABLES alice, bob

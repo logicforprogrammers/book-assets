@@ -1,3 +1,29 @@
+### 0.12
+
+- Total rewrite of "Modeling Data" chapter:
+
+  - More material introducing the concepts, specifications, properties 
+  - New topics: logic of relations, data structures, trees and graphs, implementing models in SQL, data refinement
+  - New model instance visualizations
+
+
+- Total rewrite of "Solvers", now called "Solving Math Problems":
+
+  - Four new practical examples for constraint and SMT solving
+  - New constraint topics: solver engines, satisfaction vs optimization, integer programming, problem compilation, symmetry breaking 
+  - New SMT topics: proving math theorems, formal verification, SMT-based optimization
+  - No longer covers SAT solving (not practical to use directly)
+
+- Minor improvements to "System Modeling", now called "Designing Systems"
+
+- Stronger running theme of the expressiveness/guarantees tradeoff
+
+- Copyedit passes of "Refactoring Code" and "Writing Better Tests"
+- Fixed "symmetric difference" exercise
+- Exercise answers now have a clearer backlink to the exercise
+- Various reader feedback and fixes
+- Three exercises removed, three added (+0 total)
+
 ### 0.11
 
 

@@ -1,6 +1,13 @@
-% Minizinc is a constraint solving language.
-% Try this online: https://play.minizinc.dev/
-% Learn more at https://www.minizinc.org/
+/*
+Minizinc is a constraint solving language.
+Try this online: https://play.minizinc.dev/
+Learn more at https://www.minizinc.org/
+
+This was an old example in a previous version of the book:
+Each test has a time and an optional group (0 meaning 'no group').
+All tests in the same group must be tested on the same server.
+What allocation minimizes the wall clock testing time?
+*/
 
 int: T = 10; % number tests 
 int: S = 2; % number servers
@@ -17,12 +24,6 @@ function var int: total_time(var int: s) =
 constraint forall (t1, t2 in Tests) 
   (group[t1] = group[t2] /\ group[t1] != 0 
     -> assignment[t1] = assignment[t2]);
-
-function var int: num_assigned(var int: s) =
-  count(assignment, s);
-
-constraint forall (s1, s2 in 1..S) 
-  (abs(count(assignment, s1) - count(assignment, s2)) <= 1);
 
 solve minimize max([total_time(s) | s in 1..S]);
 

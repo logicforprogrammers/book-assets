@@ -1,6 +1,9 @@
-// Alloy is a formal specification language
-// that can verify abstract software models satisfy properties.
-// Learn more at https://alloytools.org/
+/*
+An old version of an Alloy spec, where groups have users and admins,
+Admins must be members of the groups they administer.
+
+See also modeling-groups-transitive.als
+*/
 
 sig User {}
 

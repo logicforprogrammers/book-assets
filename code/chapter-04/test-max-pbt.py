@@ -21,7 +21,7 @@ f = max_of_first_five
 # f = max_of_absolute_value
 
 @given(s.lists(s.integers(), min_size=1))
-def test_max(l):
+def test_max_spec(l):
     max_val = f(l) # our max function
     assert max_val in l                   # (a)
     assert all(max_val >= x for x in l)   # (b)
