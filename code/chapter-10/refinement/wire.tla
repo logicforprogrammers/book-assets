@@ -12,21 +12,21 @@ VARIABLES alice, bob \* variables
 vars == <<alice, bob>> \* sequence [alice, bob]
 
 Init == \* == is definition
-  /\ alice = 10 
+  alice = 10 
   /\ bob = 10
 
 AliceToBob ==
   \E amnt \in 1..alice: \* \E means "some"
-    /\ alice' = alice - amnt
+    alice' = alice - amnt
     /\ bob' = bob + amnt
 
 BobToAlice ==
   \E amnt \in 1..bob:
-    /\ alice' = alice + amnt
+    alice' = alice + amnt
     /\ bob' = bob - amnt
 
 Next ==
-  \/ AliceToBob
+  AliceToBob
   \/ BobToAlice
 
 \* [][Next]_vars means [](Next \/ vars' = vars)

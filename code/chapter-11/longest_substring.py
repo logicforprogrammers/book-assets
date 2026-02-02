@@ -1,9 +1,13 @@
 # requires `pip install z3-solver`
 import z3
 
-strings = ["abcdef", "def", "bcdeF"]
-substr = z3.String('s')
+strings = ["abcdef", "def", "bcdeg"]
 
+# create the string solver variable 's',
+# store reference in Python variable 'substr'
+substr = z3.String('s') 
+
+# set up optimizer
 opt = z3.Optimize()
 for s in strings:
     opt.add(z3.Contains(s, substr))

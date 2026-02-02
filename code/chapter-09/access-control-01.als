@@ -1,43 +1,28 @@
 // Alloy is a formal specification language
 // that can verify abstract software models satisfy properties.
 // Learn more at https://alloytools.org/
-// This version has a bug.
 
-module access_permissions
+module access_control
 
-sig User {}
-
-sig Resource {
-  readable_by: set User, 
-  parent: lone Resource
+sig User {
+    policies: set Policy, // 0 or more
 }
 
-pred no_cycles {
-  no r: Resource |
-    r in r.^parent
+sig Policy {
+    allows: some Resource,  // 1 or more
 }
 
-pred spec {
-  no_cycles
-}
+sig Resource {}
 
 pred can_access[u: User, r: Resource] {
-  u in r.readable_by
-  || u in r.parent.readable_by
+    some p: u.policies |
+        r in p.allows
 }
 
-pred parent_implies_child {
-  all u: User, r: Resource |
-    can_access[u, r] => 
-      all child: r.~parent |
-        can_access[u, child]
-}
-
-check {spec => parent_implies_child} for 3
-
-// The information below gives nicer error reporting. Delete it for the generalized model
-one sig Child, Parent, Grandchild extends Resource {}
-fact {
-  Child.parent = Parent
-  Grandchild.parent = Child
-}
+// find an instance where some user can access a resource
+// `label:` is optional
+base_case: run {
+    some u: User, r: Resource {
+        can_access[u, r]
+    }
+} for 3 // up to 3 Users, Policies, and Resources

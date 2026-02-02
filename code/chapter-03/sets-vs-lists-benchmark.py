@@ -17,6 +17,8 @@ connections_as_set = {k: set(v) for k,v in connections.items()}
 # but these are directly injected in the book and I didn't want the
 # types to get in the way of the lesson. 
 # Wish there was a way to put the types ABOVE a function!
+# These also should have contracts for the same reason
+# and were left out for the same reason.
 
 def get_with_lists(user, conn_list):
     out = []

@@ -2,56 +2,44 @@
 // that can verify abstract software models satisfy properties.
 // Learn more at https://alloytools.org/
 
-module access_permissions_roles
+module access_control
 
 sig User {
-  roles: set Role
+    policies: set Policy,
+    groups: set UserGroup,
 }
 
-sig Resource {
-  parent: lone Resource
+sig UserGroup {
+    group_policies: set Policy,
 }
 
-sig Role {
-  permits: set Resource
+sig Policy {
+    allows: some Resource,
 }
 
-fun readable_by: Resource -> set User {
-  ~(roles.permits) 
-} 
+sig Resource {}
 
-pred no_cycles {
-  no r: Resource |
-    r in r.^parent
-}
+pred policy_allows[p: Policy, r: Resource] { r in p.allows }
 
-pred spec {
-  no_cycles
-}
-
-pred can_access_role[u: User, r: Resource] {
-  some role: u.roles |
-    r in role.permits 
-    || some (r.parent & role.permits)
-}
-
+// I like helper predicates
 pred can_access[u: User, r: Resource] {
-  u in r.readable_by
-  || u in r.^parent.readable_by
+    some p: u.policies + u.groups.group_policies | 
+        policy_allows[p, r]
 }
 
-pred parent_implies_child {
-  all u: User, r: Resource |
-    can_access[u, r] => 
-      all child: r.~parent |
-        can_access[u, child]
+pred no_access[u: User] {
+    all r: Resource |
+        !can_access[u, r]
 }
 
-check {spec => parent_implies_child} for 5
+no_shirt_no_policy_no_access: check {
+    all u: User |
+        !(some u.policies) => no_access[u]
+} for 1
 
-pred refinement {
-  all u: User, r: Resource |
-    can_access_role[u, r] <=> can_access[u, r]
-}
-
-check {spec => refinement} for 3
+// there is a user with 1. no policies
+// and 2. NOT no_access (ie, access to something)
+shirtless: run {
+    some u: User |
+        !(some u.policies) && !no_access[u]
+} for 1

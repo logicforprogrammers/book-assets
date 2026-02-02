@@ -1,5 +1,9 @@
 from z3 import *
 
+# requires: x >= 0, y > 0
+# ensures (a): q*y + r == x
+# ensures (b): 0 <= r < y
+# ensures (c): q >= 0
 def qr(x, y):
   q = x / y # z3 floordiv
   r = x - q*y

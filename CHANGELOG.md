@@ -1,3 +1,29 @@
+### 0.13
+
+- All chapters now explain what they will cover in the introduction
+- First draft of chapter diagrams
+- *All* chapters rewritten. Some of the notable changes:
+
+  1. "Crash Course" chapter now foreshadows how the math ties into various techniques, subtyping, expressiveness
+  2. "Writing Better Tests" has more conceptual coverage of partial specs, structural and metamorphic properties
+  3. "Composing Code Correctly" teaches contracts before assertions and generalizes subtyping rules to functions
+  4. "Proofs" has section on inductive proofs, more Dafny coverage
+  5. "Working with Databases" now comes before "Case Analysis", more on left joins, schema compatibility
+  6. "Case Analysis" now "Decoding Decisions", pretty much the same aside from reorganization
+  7. "Data modeling" now "domain modeling", which fits the overall thrust of the chapter better. Rewritten with this in mind
+  8. "Designing Systems" replaces PlusCal section with more in-depth TLA+ and refinement
+  9. "Solvers" has more on SMT solving
+  10. "Logic Programming" covers Answer Set Programming
+
+- Added "Coda" chapter
+- Expanded "Useful Rules" appendix
+- New logic theme: compatibility, a pattern across LSP, Refinement, and data modeling
+- Index page reworked with more detail on book themes
+- PDF: code diffs now show removals with strikethrough
+- Removed content on `disj` term (nothing in the book used it)
+- Various reader feedback and fixes
+- 9 exercises removed, 17 added (+8 total)
+
 ### 0.12
 
 - Total rewrite of "Modeling Data" chapter:
@@ -19,7 +45,6 @@
 - Stronger running theme of the expressiveness/guarantees tradeoff
 
 - Copyedit passes of "Refactoring Code" and "Writing Better Tests"
-- Fixed "symmetric difference" exercise
 - Exercise answers now have a clearer backlink to the exercise
 - Various reader feedback and fixes
 - Three exercises removed, three added (+0 total)

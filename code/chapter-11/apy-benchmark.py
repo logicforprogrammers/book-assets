@@ -9,26 +9,32 @@ This is also much, much faster than the constraint solver version.
 from time import time_ns
 
 def total_returns(c: int, irate: float, years: int) -> float:
-    out = c
-    for _ in range(years-1): # years - 1
+    assert years >= 1
+    assert irate > 0.0
+    out = 0
+    for _ in range(years):
         out = out * (1 + irate) + c
+    assert out >= c * years
     return out
 
 start = time_ns()
-print(start)
 goal = 10000
+years = 20
+irate = 0.03
 lo, hi = 0, goal
 i = (lo + hi) // 2
 
 while True:
-    x = total_returns(i, 0.03, 20)
+    assert lo <= i <= hi, f"{(lo, i, hi)}" # loop invariant
+    x = total_returns(i, irate, years)
     if x > goal:
         hi, i = i, (lo + i)//2
     elif x < goal:
-        lo, i = i, (i + hi)//2
+        lo, i = i, (hi + i)//2
     if i in (lo, hi):
         break
 
-print(hi)
-print(time_ns())
 print(f"time (ms): {(time_ns() - start) / 1_000_000}")
+assert total_returns(hi, irate, years) >= goal
+assert total_returns(lo, irate, years) < goal
+print(hi)

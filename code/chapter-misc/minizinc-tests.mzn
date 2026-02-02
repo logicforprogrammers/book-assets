@@ -7,6 +7,8 @@ This was an old example in a previous version of the book:
 Each test has a time and an optional group (0 meaning 'no group').
 All tests in the same group must be tested on the same server.
 What allocation minimizes the wall clock testing time?
+
+(It was later converted to an ASP problem in chapter 12)
 */
 
 int: T = 10; % number tests 

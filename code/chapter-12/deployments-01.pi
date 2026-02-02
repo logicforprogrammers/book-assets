@@ -3,33 +3,43 @@
 
 import planner, math, util.
 
-final(N) =>
-  foreach($server(_, State, Version) in N)
-    State = on, Version = 3
-  end.
+% Rules are written with `=>` instead of `:-`
+main =>
+  Start = [$server(s1, on, 1), $server(s2, on, 1)], % initial state
+  best_plan(Start, Plan, Cost), % find `Plan` with lowest `Cost`
+  writeln(Plan), writeln(Cost).
 
-cost(State) = 1.
-
-% At least one server online
+% At least one server must be online
 valid(State) => member($server(_, on, _), State). 
 
-action(From, To, Action, Cost) ?=> % toggle state
+% One of the planning actions. Toggles state
+action(From, To, Action, Cost) ?=> 
   member(X, From), 
   (
-   Action = $off(X[1]), To = replace(From, X, X.replace(on, off));
-   Action = $on(X[1]), To = replace(From, X, X.replace(off, on))
+   % off -> on
+   Action = $off(X[1]), 
+   To = replace(From, X, X.replace(on, off))
+    ; % `;` is `or`
+   % on -> off
+   Action = $on(X[1]), 
+   To = replace(From, X, X.replace(off, on))
   ), 
   valid(To), 
-  Cost = cost(From).
+  Cost = cost(From). % How much the step "costs"
 
-action(From, To, Action, Cost) => % increment version
+% Increments version. *Can* go above 3
+action(From, To, Action, Cost) =>
   member(X, From),
   X = $server(Name, off, Version),
   To = replace(From, X, X.replace_at(3, Version+1)),
   Action = $upgrade(Name),
   Cost = cost(From).
 
-main =>
-  Start = [$server(s1, on, 1), $server(s2, on, 1)],
-  best_plan(Start, Plan, Cost),
-  writeln(Plan), writeln(Cost).
+% Goal state: all servers online and version 3
+final(N) =>
+  foreach($server(_, State, Version) in N)
+    State = on, Version = 3
+  end.
+
+% How much a step "costs" (Foreshadowing)
+cost(Step) = 1.

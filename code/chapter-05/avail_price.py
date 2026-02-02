@@ -1,11 +1,5 @@
 import math
-from dataclasses import dataclass
 
-@dataclass
-class Item:
-    name: str = ""
-    price: int = 1 # typeinv: price > 0
-    available: bool = True
 
 # Note this shadows the builtin python max.
 # I kept the same name to make the book explanation cleaner
@@ -19,6 +13,14 @@ def max(l):
     assert out in l, "out must be in list"
     assert all(out >= x for x in l), "out must be max"
     return out
+
+# defines a Python struct/record
+from dataclasses import dataclass
+@dataclass
+class Item:
+    name: str
+    price: int
+    available: bool
 
 # Get max price of available items
 def max_avail_price(items):
