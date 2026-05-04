@@ -1,3 +1,12 @@
+### 0.14
+
+- Major copyedit and technical edit passes
+- Solvers chapter now handles "unknown" result in SMT
+- Rewrite of "Refinement" section of System Modeling chapter
+- "Expressiveness-Guarantee Tradeoff" is now "Ability-Guarantee Tradeoff"
+- "Compatibility" now "Replacement"
+- Various layout changes and fixes
+
 ### 0.13
 
 - All chapters now explain what they will cover in the introduction
