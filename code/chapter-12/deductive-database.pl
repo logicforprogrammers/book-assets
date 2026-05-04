@@ -25,6 +25,7 @@ untested_commit(file(File)) :-
     \+ member(testfile(File), Files).
 
 % Helper rule to use in `file_problems` setof's `Goal`
+% Note the rule definition uses both atoms and variables
 has_problem(high_churn, File) :- high_churn(File).
 has_problem(untested_commit, File) :- untested_commit(File).
 

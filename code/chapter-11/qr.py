@@ -29,8 +29,11 @@ s.add(q == qr(x, y)[0])
 s.add(r == qr(x, y)[1])
 
 for e in ensures:
-    if s.check(Not(e)) == sat:
+    result = s.check(Not(e))
+    if result == sat:
         m = s.model()
         print(f"{e} violated: ", [m[x], m[y], m[q], m[r]])
-    else:
+    elif result == unsat:
         print(f"{e} holds")
+    else:
+        print(f"{e} unknown")

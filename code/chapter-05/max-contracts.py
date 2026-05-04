@@ -14,7 +14,7 @@ def max(l):
     for i in l:
       if i > out:
         out = i
-    assert out in l #(b)
+    assert out in l # (b)
     assert all(out >= x for x in l) 
     return out
 

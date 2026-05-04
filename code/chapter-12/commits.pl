@@ -21,7 +21,7 @@ ancestor(A, Commit) :-
     parent(A, Y),
     ancestor(Y, Commit).
 
-% A rule
+% A rule, defined with :-
 % Note it uses two internal variables, P1 and P2
 mergecommit(C) :-
     parent(P1, C), 

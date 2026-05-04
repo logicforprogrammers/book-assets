@@ -55,8 +55,9 @@ INSERT INTO dep_managers (emp_id, dep_id, start_at, end_at) VALUES
 
 -- existence query
 -- In SQL, true == 1 and false == 0
-SELECT 1 FROM dep_managers AS dm
-  WHERE dm.emp_id = 1
+SELECT 1 -- `some`
+FROM dep_managers AS dm -- dm in dep_managers:
+  WHERE dm.emp_id = 1 
     AND dm.dep_id = 3
     AND 20 BETWEEN dm.start_at AND dm.end_at;
 

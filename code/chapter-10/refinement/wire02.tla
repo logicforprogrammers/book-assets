@@ -32,12 +32,4 @@ Spec == Init /\ [][Next]_vars
 NoOverdrafts ==
   [](\A p \in People:
     balance[p] >= 0)
-
-Abstract == INSTANCE wire 
-            WITH alice <- balance["alice"], 
-                 bob   <- balance["bob"]
-
-\* TLA+ uses `!` for qualified lookup
-Refinement == Abstract!Spec
-
 ====
