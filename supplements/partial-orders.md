@@ -1,14 +1,8 @@
 # Partial Orders
 
-In Testing:
+In *Testing*:
 
-> If P passes, Q also passes. If R passes, Q also passes. This means P => Q && R => Q.
-P and R are stronger than Q in different ways: P gives a more specific answer for
-the same input, while R gives the same answer for a superset of inputs. Neither R
-nor P are stronger than each other: each will pass some version of max the other
-would reject. Mathematicians would say that => forms a partial order 
-
-> If ``P`` passes, ``Q`` also passes. If ``R`` passes, ``Q`` also passes. This means ``P => Q && R => Q``. ``P`` and ``R`` are stronger than ``Q`` in different ways: ``P`` gives a more specific answer for the same input, while ``R`` gives the same answer for a superset of inputs. Neither ``R`` nor ``P`` are stronger than each other: each will pass some version of ``max`` the other would reject. Mathematicians would say that ``=>`` forms a :dfn:`partial order` (:numref:`test-ordering`). 
+> If P passes, Q also passes. If R passes, Q also passes. This means `P => Q && R => Q`. P and R are stronger than Q in different ways: P gives a more specific answer for the same input, while R gives the same answer for a superset of inputs. Neither R nor P are stronger than each other: each will pass some version of max the other would reject. Mathematicians would say that `=>` forms a **partial order**. 
 
 Partial orderings are a useful concept that would have taken too many pages in the book, so I'm putting it here.
 
@@ -49,7 +43,7 @@ So it's still reflexive, antisymmetric, and transitive, but no longer total. Som
 
 We can't meaningfully sort a set on a partial order. Instead, we get the weaker property "we can put the set into a directed acyclic graph". And because DAGs crop up all over the place (along with the special case of trees),  a lot of things have interesting partial orders. Commit graph? Partial order. Type hierarchy? Partial order. Package dependencies? Partial order. 
 
-### [Advanced] Test strength is "partially ordered"
+### [Advanced] Some pedantry on saying "test strength is partially ordered"
 
 Now, in the book, I said that `=>` forms a partial order. First of all, this is a lie-by-omission, because I never told you "on what set". On the booleans, `=>` forms a *total* order. In the context of the chapter, I was using `P => Q` as shorthand for "`all func:` if `func` passes test P then `func` passes test Q". In the language of partial orders:
 
@@ -66,12 +60,10 @@ But this has a new problem: a partial order is a property of a relation and a *s
 The basic idea is that we can sort of [mimic](https://www.hillelwayne.com/post/software-mimicry/) a "set of predicates" by creating a set of boolean functions, as in discussed in [quantifying over functions](function-sets.md). Define `[Int]⁺` to mean `NonemptyList[Int]`. If `max` has type `[Int]⁺ -> Int`, then it belongs to the *set of functions* `[Int]⁺ -> Int`. A "test of `max`", then, is any function that takes an element `candidate` of `[Int]⁺ -> Int` and returns true when passed in `max`. Then the set of all "tests of `max`" is a subset of `([Int]⁺ -> Int) -> Bool` and can be partially ordered by implication:
 
 ```
-# For terseness, let [Int]⁺ mean [Int]⁺
-
 TestsOfMax = {f in ([Int]⁺ -> Int) -> Bool: f(max)}
 
 weak ≼ strong =
-  all f in [Int]⁺ -> Int
+  all f in [Int]⁺ -> Int:
     strong(f) => weak(f)
 
 PartialOrdering(≼, TestsOfMax)
