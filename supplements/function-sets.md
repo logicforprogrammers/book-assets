@@ -11,7 +11,7 @@ So, uh, isn't this kinda weird? Why is quantifying over predicates forbidden but
 
 The answer comes down to how we define "function". If a function is "anything that takes an input value and returns an output value", then they're called [function symbols](https://en.wikipedia.org/wiki/Function_symbol) and no more tractable than predicates. But most of the time we think of functions as not taking *any* kind of input and producing *any* kind of output, but things like "take a boolean and output a boolean" or "taking a string and an int and output a set of floats". 
 
-Most math is done with this more restriction notion of "function": a mapping between two known sets. So let's formalize this notion and see what we can do with it.
+Most math is done with this more restrictive notion of "function": a mapping between two known sets. So let's formalize this notion and see what we can do with it.
 
 ## Set-theoretic functions
 
@@ -78,7 +78,7 @@ commutative = {f in Int x Int -> Int: all x, y in Int: f(x, y) = f(y, x)}
 
 ## Why can't we do the same with predicates?
 
-The argument goes "well predicates are basically boolean functions, so if we want to quantify over the predicates by quantifying over the set of boolean functions".
+The argument goes "well predicates are basically boolean functions, so we can quantify over the predicates by quantifying over the set of boolean functions".
 
 Except there's no "set of boolean functions". In order to construct the function set you need *both* the domain and the codomain. So there's the set of all boolean functions on strings, the set of all boolean functions over strings, etc.
 
@@ -123,7 +123,7 @@ Incidentally, currying is vaguely why we can [reorder the indices](https://panda
 
 ### And admitting some guilt
 
-Now, I keep using the model "types are sets of values", and polymorphic functions are one place that model breaks down. You can write this function is Haskell:
+Now, I keep using the model "types are sets of values", and polymorphic functions are one place that model breaks down. You can write this function in Haskell:
 
 ```haskell
 id :: a -> a
