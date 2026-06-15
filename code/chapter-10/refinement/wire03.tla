@@ -55,5 +55,5 @@ NoOverdrafts ==
     balance[p] >= 0)
 
 Abstract == INSTANCE wire02 WITH balance <- balance
-Refinement == Abstract!Spec
+Refinement == Abstract!Spec \* ! is namespacing
 ====

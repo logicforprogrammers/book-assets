@@ -16,7 +16,7 @@ Init ==
   balance = [p \in People |-> 10]
 
 Wire(sender, receiver) ==
-  /\ sender # receiver \* # means !=
+  /\ sender # receiver \* # means not equal 
   /\ \E amnt \in 1..balance[sender]:
       balance' = [balance 
         EXCEPT ![sender] = balance[sender] - amnt,

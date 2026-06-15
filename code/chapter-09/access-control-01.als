@@ -22,7 +22,6 @@ pred can_access[u: User, r: Resource] {
 // find an instance where some user can access a resource
 // `label:` is optional
 base_case: run {
-    some u: User, r: Resource {
+    some u: User, r: Resource |
         can_access[u, r]
-    }
 } for 3 // up to 3 Users, Policies, and Resources

@@ -14,7 +14,7 @@ array[Items] of var Bins: bin; % bin[2] = 1 -> item 2 in bin 1
 constraint forall (b in Bins)
   (sum (i in Items) 
     % add only the items in that bin to get the bin's total
-    % if-then-else makes this not a linear constraint
+    % if-then-else makes this a nonlinear constraint
     (if bin[i] = b then size[i] else 0 endif) <= BinCapacity 
   );
 

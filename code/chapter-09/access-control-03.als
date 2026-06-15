@@ -44,9 +44,7 @@ pred prop_denial_prevents_access {
         (some p: u.policies | policy_denies[p, r]) =>  !can_access[u, r]
 }
 
-check {
-   pre => prop_denial_prevents_access
-} for 2
+check { pre => prop_denial_prevents_access } for 2
 
 run { pre && some p: Policy | !(some p.denies) } for 20
 run { pre && some p: Policy | !(some p.allows) } for 20

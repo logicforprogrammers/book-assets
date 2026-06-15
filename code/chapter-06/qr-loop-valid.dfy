@@ -7,7 +7,8 @@ method qr_loop(x: int, y: int) returns (q: int, r: int)
   requires x >= 0
   requires y > 0
   ensures q*y + r == x
-  ensures 0 <= r < y
+  ensures r >= 0 
+  ensures r < y
   ensures q >= 0
 {
   q := 0;

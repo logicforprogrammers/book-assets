@@ -17,7 +17,7 @@ def old_function(l):
     return "do_other_thing()"
 
 def refactor(l):
-  if all(P(x) and not Q(x) for x in l):
+  if all(P(x) and Q(x) for x in l):
     return "do_other_thing()"
   else:
     return "do_thing()"
@@ -25,4 +25,3 @@ def refactor(l):
 @given(s.lists(s.text()))
 def test_max(l):
     assert old_function(l) == refactor(l)
-

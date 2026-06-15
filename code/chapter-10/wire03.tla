@@ -9,8 +9,9 @@ EXTENDS Integers
 
 VARIABLES 
   balance, \* Each user's balance
-  state,  \* The state of a wire
-  data \* For transferring wires, who sends how much to who
+  state,   \* The state of a wire
+  data     \* For transferring wires, who sends how much to who
+
 vars == <<balance, state, data>>
 
 People == {"alice", "bob"}

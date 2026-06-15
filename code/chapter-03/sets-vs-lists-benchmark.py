@@ -21,6 +21,7 @@ connections_as_set = {k: set(v) for k,v in connections.items()}
 # and were left out for the same reason.
 
 def get_with_lists(user, conn_list):
+    # conn_list looks like {"alice": ["bob", "carol"], ...}
     out = []
     for c in conn_list[user]:
         for u in conn_list[c]:

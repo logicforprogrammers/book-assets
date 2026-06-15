@@ -19,7 +19,7 @@ action(From, To, Action, Cost) ?=>
    % off -> on
    Action = $off(X[1]), 
    To = replace(From, X, X.replace(on, off))
-    ; % `;` is `or`
+  ; % `;` is `or`
    % on -> off
    Action = $on(X[1]), 
    To = replace(From, X, X.replace(off, on))

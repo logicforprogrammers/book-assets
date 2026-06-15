@@ -1,3 +1,13 @@
+### v0.15
+
+- All diagrams redone with captions
+- Major proofreading and line edit passes
+- Additional "Learn More" in logic chapter and decision tables
+- "Proofs" chapter clearer on induction proofs
+- Ebook pdf made smaller for easier phone-reading
+- Supplemental material added
+- Various layout changes and fixes
+
 ### 0.14
 
 - Major copyedit and technical edit passes
