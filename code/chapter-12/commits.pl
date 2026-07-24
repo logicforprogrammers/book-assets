@@ -26,7 +26,7 @@ ancestor(A, Commit) :-
 mergecommit(C) :-
     parent(P1, C), 
     parent(P2, C), 
-    \+ (P1 = P2). % `\+` is 'not'
+    \+ (P1 = P2). % `\+` means 'not'
 
 branchcommit(C) :-
     parent(C, B1),

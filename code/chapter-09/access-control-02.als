@@ -38,7 +38,7 @@ no_shirt_no_policy_no_access: check {
 } for 1
 
 // there is a user with 1. no policies
-// and 2. NOT no_access (ie, access to something)
+// and 2. NOT no_access (ie, has access to something)
 shirtless: run {
     some u: User |
         !(some u.policies) && !no_access[u]

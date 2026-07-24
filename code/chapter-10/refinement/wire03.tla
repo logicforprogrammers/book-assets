@@ -54,6 +54,6 @@ NoOverdrafts ==
   [](\A p \in People:
     balance[p] >= 0)
 
-Abstract == INSTANCE wire02 WITH balance <- balance
+Abstract == INSTANCE wire02
 Refinement == Abstract!Spec \* ! is namespacing
 ====

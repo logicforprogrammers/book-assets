@@ -59,7 +59,7 @@ SELECT 1 -- `some`
 FROM dep_managers AS dm -- dm in dep_managers:
   WHERE dm.emp_id = 1 
     AND dm.dep_id = 3
-    AND 20 BETWEEN dm.start_at AND dm.end_at;
+    AND 6 BETWEEN dm.start_at AND dm.end_at;
 
 -- values query
 SELECT dm.emp_id, dm.dep_id FROM dep_managers AS dm 

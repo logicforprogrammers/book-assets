@@ -33,8 +33,8 @@ def get_with_lists(user, conn_list):
 def get_with_sets(user, conn_set):
     out = set()
     for c in conn_set[user]:
-        out |= conn_set[c] #union=
-    out -= {user} #difference=
+        out |= conn_set[c] #like += but with set union
+    out -= {user} #same but with set difference
     return out
 
 def test_all_bidirectional():

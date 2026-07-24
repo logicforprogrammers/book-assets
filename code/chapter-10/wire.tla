@@ -29,6 +29,7 @@ Next ==
   \/ AliceToBob
   \/ BobToAlice
 
+
 \* [][Next]_vars means [](Next \/ vars' = vars)
 \* Since vars is a list of all variables
 \* It means "Next or stutter"

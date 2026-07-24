@@ -15,12 +15,13 @@ from enum import Enum
 
 Status = Enum("Status", "available out_of_stock discontinued")
 
+# invariant: price > 0
 # invariant: !(available && discontinued)
 @dataclass
 class Item:
   name: str
-  price: int # invariant: price > 0
-  status: Status = Status.available
+  price: int
+  status: Status
 
 i = Item("a", 2, Status.available)
 i2 = Item("a", 2, "blancelled") # Python typechecker raises an error (but still lets it run)
