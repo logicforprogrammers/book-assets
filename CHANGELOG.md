@@ -1,3 +1,8 @@
+### 1.0
+
+- Final proofreading pass
+- Print version now available
+
 ### 0.15
 
 - All diagrams redone with captions
