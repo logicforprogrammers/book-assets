@@ -1,5 +1,12 @@
 # Errata for v1.0
 
+On **page 11** [Math error]:
+
+The text says that mathematicians "might define pairs in terms of sets by writing `(a, b)` as `{a, {b}}`". This is incorrect, as it maps both `({a}, b)` and `({b}, a)`  to `{{a}, {b}}`. The actual definition of a pair (the [Kuratowski definition](https://en.wikipedia.org/wiki/Ordered_pair#Kuratowski's_definition)) is `(a,b) = {{a}, {a, b}}`. 
+
+---
+
+
 On **page 15** [Text change]:
 
 The text should read "We often use `=>` to only **check** an `all` on a subset of elements."
